@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fashionista Avenue</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+    <!-- Include TypeIt library -->
+    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+    <script src="https://unpkg.com/heroicons@1.0.0/dist/heroicons.js"></script>
+    <!-- JavaScript untuk mengubah transparansi navbar saat scroll -->
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById("mobile-menu");
+        menu.classList.toggle("hidden");
+      }
+
+      function handleScroll() {
+        const navbar = document.getElementById("navbar");
+        const threshold = 50; // Offset scroll di mana navbar menjadi transparan
+
+        if (window.scrollY > threshold) {
+          navbar.classList.add(
+            "bg-transparent",
+            "backdrop-blur-lg",
+            "transition",
+            "duration-300"
+          );
+          navbar.classList.remove("shadow-lg");
+        } else {
+          navbar.classList.remove(
+            "bg-transparent",
+            "backdrop-blur-lg",
+            "transition",
+            "duration-300"
+          );
+          navbar.classList.add("shadow-lg");
+        }
+      }
+
+      window.addEventListener("scroll", handleScroll);
+    </script>
+  </head>
+  <body>
+    <nav
+      id="navbar"
+      class="bg-white sticky top-0 z-50 transition duration-300 shadow-xl py-2"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+          <!-- Logo -->
+          <div class="flex items-center space-x-2">
+            <img src="img/logo.png" alt="Logo" class="h-20 w-auto" />
+            <a href="#" class="text-2xl font-bold text-gray-800"
+              >Switch <span class="text-purple-800">Style</span></a
+            >
+          </div>
+
+          <!-- Desktop Menu with Search -->
+          <div class="hidden md:flex space-x-6 items-center">
+            <ul class="flex space-x-4">
+              <li>
+                <a
+                  href="index.html"
+                  class="text-lg text-gray-700 hover:text-purple-700"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#toko"
+                  class="text-lg text-gray-700 hover:text-purple-700"
+                  >List Toko</a
+                >
+              </li>
+            </ul>
+
+            <!-- Search Input -->
+            <div class="relative">
+              <input
+                type="text"
+                placeholder="Search..."
+                class="border rounded-full px-3 py-2 text-gray-700 focus:outline-none focus:ring focus:ring-purple-500 transition"
+              />
+              <button class="absolute inset-y-0 right-0 flex items-center pr-3">
+                <svg
+                  class="w-5 h-5 text-gray-700"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M11 11l6.5 6.5M8 6a6 6 0 116 6-6 6 6 0 01-6-6z"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Login and Sign Up -->
+            <div class="space-x-4">
+              <button
+                class="bg-purple-800 text-white px-3 py-2 rounded-full hover:bg-purple-700 transition"
+              >
+                Login
+              </button>
+              <button
+                class="bg-white text-purple-800 border border-purple-800 px-3 py-2 rounded-full hover:bg-purple-700 hover:text-white transition"
+              >
+                Sign Up
+              </button>
+            </div>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <div class="md:hidden">
+            <button
+              onClick="toggleMenu()"
+              class="text-gray-700 focus:outline-none focus:text-gray-900"
+            >
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16m-16 6h16"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Mobile Menu -->
+          <div id="mobile-menu" class="hidden md:hidden">
+            <ul class="mt-2 space-y-1">
+              <li>
+                <a href="#home" class="block text-gray-700 hover:text-gray-900"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a href="#toko" class="block text-gray-700 hover:text-gray-900"
+                  >List Toko</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="py-10">
+      <div class="px-10">
+        <h1 class="text-3xl font-bold text-center mb-5">Fashionista Avenue</h1>
+      </div>
+
+      <div class="container mx-auto px-4 py-6 mb-5">
+        <!-- Menggunakan grid untuk mengatur kolom -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Bagian kiri dengan teks -->
+          <div class="flex flex-col justify-center">
+            <!-- Untuk memastikan konten berada di tengah -->
+            <h1
+              id="typing"
+              class="text-3xl font-bold text-purple-700 mb-4"
+            ></h1>
+            <p class="text-gray-700 mb-4">
+              Temukan koleksi mode terbaru kami yang dirancang untuk
+              mencerminkan jiwa Anda yang penuh gaya. Mulai dari gaun elegan
+              hingga pakaian kasual yang trendi, kami memiliki semua yang Anda
+              butuhkan untuk menciptakan tampilan yang sempurna.
+            </p>
+            <div>
+              <!-- Tombol dengan tautan ke WhatsApp -->
+              <a
+                href="https://wa.me/6281234567890?text=Halo!%20Saya%20ingin%20menyewa%20gaun%20dan%20jas."
+                class="bg-white-600 border border-purple-700 text-purple-700 py-2 px-4 rounded-lg mt-2 hover:bg-purple-700 hover:text-white"
+              >
+                Sewa Sekarang
+              </a>
+            </div>
+            <button
+              class="bg-teal-600 text-gray-500 py-2 px-4 rounded-lg hover:bg-teal-700"
+            >
+              Pelajari Lebih Lanjut..
+            </button>
+          </div>
+
+          <!-- Bagian kanan dengan gambar -->
+          <div>
+            <img
+              src="img/wedding/img.png"
+              alt="Gambar Deskriptif"
+              class="w-full h-64 object-cover rounded-lg transition-transform duration-300 hover:scale-105"
+            />
+          </div>
+        </div>
+      </div>
+      <!-- Main Content -->
+      <div class="container mx-auto p-4">
+        <!-- Daftar Barang -->
+        <div class="flex">
+          <h2 class="text-2xl font-semibold mb-2">Daftar Gaun & Jas</h2>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6 mt-2 text-gray-500"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
+            />
+          </svg>
+        </div>
+        <h3>Wanita--</h3>
+        <!-- Daftar Barang -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Barang 1 -->
+          <div class="bg-white p-4 rounded-lg shadow-lg">
+            <img
+              src="img/wedding/602ca03aed2d37922cc76a9146434d87.jpg"
+              alt="Barang 1"
+              class="w-72 h-92 object-cover mb-2 rounded-md transition-transform duration-300 hover:scale-105"
+            />
+            <h3 class="text-xl font-semibold">Gaun A-Line</h3>
+            <p class="text-gray-600">Gaun dengan bentuk mirip huruf "A".</p>
+            <p class="text-teal-600 font-bold">Rp 1.000.000/hari</p>
+            <!-- Tambahkan status ketersediaan -->
+            <p class="text-green-600 font-semibold">Tersedia untuk disewa</p>
+            <!-- Misalnya, jika barang tersedia -->
+            <!-- Atau, jika barang tidak tersedia -->
+            <!-- <p class="text-red-600 font-semibold">Tidak tersedia untuk disewa</p> -->
+            <a href="https://wa.me/6281234567890?text=Halo!%20Saya%20ingin%20menyewa%20gaun A-Line,%20Tanggal: ,Lama pinjaman: .">
+                <button
+              class="bg-white-600 border border-purple-700 text-purple-700 py-2 px-4 rounded-lg mt-2 hover:bg-purple-700 hover:text-white"
+            >
+              Sewa Sekarang
+            </button>
+            </a>
+          </div>
+
+          <!-- Barang 2 -->
+          <div class="bg-white p-4 rounded-lg shadow-lg">
+            <img
+              src="img/wedding/7b043109720ca47094423a6a615daccc.jpg"
+              alt="Barang 1"
+              class="w-72 h-92 object-cover mb-2 rounded-md pt-2"
+            />
+            <h3 class="text-xl font-semibold">Tea-Length</h3>
+            <p class="text-gray-600">Gaun dengan panjang rok sampai betis.</p>
+            <p class="text-teal-600 font-bold">Rp 500.000/hari</p>
+            <!-- Tambahkan status ketersediaan -->
+            <p class="text-red-600 font-semibold">
+              Belum tersedia untuk disewa
+            </p>
+            <!-- Misalnya, jika barang tersedia -->
+            <!-- Atau, jika barang tidak tersedia -->
+            <!-- <p class="text-red-600 font-semibold">Tidak tersedia untuk disewa</p> -->
+            <button
+              class="bg-white-600 border border-purple-700 text-purple-700 py-2 px-4 rounded-lg mt-2 hover:bg-purple-700 hover:text-white"
+            >
+              Sewa Sekarang
+            </button>
+          </div>
+
+          <!-- Barang 3 -->
+          <div class="bg-white p-4 rounded-lg shadow-lg">
+            <img
+              src="img/wedding/eadf1aa00dfb087f63af9203517aca5a.jpg"
+              alt="Barang 1"
+              class="w-72 h-92 object-cover mb-2 rounded-md pt-2"
+            />
+            <h3 class="text-xl font-semibold">Trumpet</h3>
+            <p class="text-gray-600">Gaun dengan rok panjang.</p>
+            <p class="text-teal-600 font-bold">Rp 350.000/hari</p>
+            <!-- Tambahkan status ketersediaan -->
+            <p class="text-green-600 font-semibold">Tersedia untuk disewa</p>
+            <!-- Misalnya, jika barang tersedia -->
+            <!-- Atau, jika barang tidak tersedia -->
+            <!-- <p class="text-red-600 font-semibold">Tidak tersedia untuk disewa</p> -->
+            <button
+              class="bg-white-600 border border-purple-700 text-purple-700 py-2 px-4 rounded-lg mt-2 hover:bg-purple-700 hover:text-white"
+            >
+              Sewa Sekarang
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="container mx-auto p-4">
+        <!-- Daftar Barang -->
+        <h3>Pria--</h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Barang 1 -->
+          <div class="bg-white p-4 rounded-lg shadow-lg">
+            <img
+              src="img/jas/01810432bcb24bcccbd8facd379deb6d.jpg"
+              alt="Barang 1"
+              class="w-72 h-92 object-cover mb-2 rounded-md"
+            />
+            <h3 class="text-xl font-semibold">Kamera DSLR</h3>
+            <p class="text-gray-600">
+              Sewa Kamera DSLR untuk fotografi profesional.
+            </p>
+            <p class="text-teal-600 font-bold">Rp 200,000/hari</p>
+            <button
+              class="bg-teal-600 text-white py-2 px-4 rounded-lg mt-2 hover:bg-teal-700"
+            >
+              Sewa Sekarang
+            </button>
+          </div>
+
+          <!-- Barang 2 -->
+          <div class="bg-white p-4 rounded-lg shadow-lg">
+            <img
+              src="img/jas/01810432bcb24bcccbd8facd379deb6d.jpg"
+              alt="Barang 1"
+              class="w-72 h-92 object-cover mb-2 rounded-md"
+            />
+            <h3 class="text-xl font-semibold">Kamera DSLR</h3>
+            <p class="text-gray-600">
+              Sewa Kamera DSLR untuk fotografi profesional.
+            </p>
+            <p class="text-teal-600 font-bold">Rp 200,000/hari</p>
+            <button
+              class="bg-teal-600 text-white py-2 px-4 rounded-lg mt-2 hover:bg-teal-700"
+            >
+              Sewa Sekarang
+            </button>
+          </div>
+
+          <!-- Barang 3 -->
+          <div class="bg-white p-4 rounded-lg shadow-lg">
+            <img
+              src="img/jas/01810432bcb24bcccbd8facd379deb6d.jpg"
+              alt="Barang 1"
+              class="w-72 h-92 object-cover mb-2 rounded-md"
+            />
+            <h3 class="text-xl font-semibold">Kamera DSLR</h3>
+            <p class="text-gray-600">
+              Sewa Kamera DSLR untuk fotografi profesional.
+            </p>
+            <p class="text-teal-600 font-bold">Rp 200,000/hari</p>
+            <button
+              class="bg-teal-600 text-white py-2 px-4 rounded-lg mt-2 hover:bg-teal-700"
+            >
+              Sewa Sekarang
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="bg-purple-800 text-white py-8">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Company Info -->
+          <div>
+            <h3 class="text-lg font-bold mb-2">Switch Style</h3>
+            <p class="text-sm">
+              Toko fashion yang menyediakan berbagai produk berkualitas tinggi
+              untuk memenuhi kebutuhan Anda.
+            </p>
+          </div>
+
+          <!-- Navigation Links -->
+          <div>
+            <h3 class="text-lg font-bold mb-2">Navigasi</h3>
+            <ul class="space-y-1">
+              <li><a href="#home" class="hover:underline">Home</a></li>
+              <li><a href="#toko" class="hover:underline">List Toko</a></li>
+              <li><a href="#services" class="hover:underline">Layanan</a></li>
+              <li><a href="#contact" class="hover:underline">Kontak</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact Info -->
+          <div>
+            <h3 class="text-lg font-bold mb-2">Kontak</h3>
+            <ul class="space-y-1">
+              <li><strong>Alamat:</strong> Jalan Raya No. 123, Jakarta</li>
+              <li><strong>Telepon:</strong> (021) 123-4567</li>
+              <li><strong>Email:</strong> info@switchstyle.com</li>
+            </ul>
+          </div>
+
+          <!-- Social Media Links -->
+          <div>
+            <h3 class="text-lg font-bold mb-2">Sosial Media</h3>
+            <ul class="flex space-x-4">
+              <li>
+                <a
+                  href="https://www.facebook.com/"
+                  class="hover:text-purple-300"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-6 h-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M22.675 0h-21.35C.601 0 0 .601 0 1.325v21.351c0 .724.601 1.324 1.325 1.324h11.49V14.768h-3.141v-3.631h3.141V8.954c0-3.109 1.896-4.808 4.667-4.808 1.325 0 2.466.099 2.796.143v3.24h-1.918c-1.504 0-1.794.715-1.794 1.763v2.315h3.587l-.467 3.631h-3.12V24h6.116c.724 0 1.325-.6 1.325-1.325V1.325C24 .601 23.399 0 22.675 0z"
+                    />
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.twitter.com/"
+                  class="hover:text-purple-300"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-6 h-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M23.644 4.839c-.835.371-1.733.621-2.675.735 1.027-.616 1.712-1.591 2.068-2.753-.958.571-1.986.973-3.048 1.191-.884-.941-2.101-1.528-3.467-1.528-2.625 0-4.758 2.134-4.758 4.758 0 .371.045.733.122 1.079-3.963-.199-7.461-2.099-9.814-4.986-.412.707-.65 1.521-.65 2.407 0 1.664.848 3.136 2.122 4.001-.787-.03-1.536-.242-2.185-.598v.06c0 2.325 1.656 4.263 3.853 4.699-.403.109-.827.171-1.268.171-.307 0-.599-.027-.889-.085.601 1.878 2.346 3.237 4.416 3.273-1.616 1.263-3.654 2.019-5.86 2.019-.379 0-.739-.026-1.1-.067 2.088 1.338 4.518 2.124 7.165 2.124 8.591 0 13.297-7.09 13.297-13.237 0-.202 0-.403-.014-.604.913-.658 1.711-1.479 2.337-2.412z"
+                    />
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.instagram.com/"
+                  class="hover:text-purple-300"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-6 h-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.32 3.608 1.294 1.013 1.012 1.257 2.253 1.294 3.608.058 1.267.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.037 1.355-.281 2.596-1.294 3.608-1.013 1.012-2.253 1.257-3.608 1.294-1.267.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.355-.037-2.596-.281-3.608-1.294-1.012-1.013-1.257-2.253-1.294-3.608-.058-1.267-.07-1.646-.07-4.85s.012-3.584.07-4.85c.037-1.355.281-2.596 1.294-3.608 1.013-1.012 2.253-1.257 3.608-1.294 1.267-.058 1.646-.07 4.85-.07zm0-2.163C8.755 0 8.333.012 7.053.07 5.752.134 4.608.33 3.608 1.294 2.612 2.253 2.417 3.402 2.357 4.7c-.059 1.284-.07 1.71-.07 7.3 0 5.588.011 6.016.07 7.3.06 1.298.255 2.447 1.251 3.406.996.958 2.148 1.154 3.446 1.214 1.276.058 1.7.07 6.646.07 4.945 0 5.369-.012 6.645-.07 1.298-.06 2.45-.256 3.446-1.214 1-.959 1.194-2.108 1.251-3.406.059-1.284.07-1.71.07-7.3 0-5.588-.011-6.016-.07-7.3-.06-1.298-.256-2.447-1.251-3.406-.996-.958-2.148-1.154-3.446-1.214-1.28-.058-1.702-.07-6.647-.07zM12 5.838c-3.398 0-6.162 2.764-6.162 6.162 0 3.397 2.764 6.161 6.162 6.161 3.397 0 6.162-2.764 6.162-6.161 0-3.398-2.765-6.162-6.162-6.162zm0 10.161c-2.2 0-3.999-1.799-3.999-3.999 0-2.2 1.799-3.999 3.999-3.999 2.2 0 3.999 1.799 3.999 3.999 0 2.2-1.799 3.999-3.999 3.999zm7.406-10.883c-.796 0-1.443-.647-1.443-1.443 0-.796.647-1.443 1.443-1.443.796 0 1.443.647 1.443 1.443 0 .796-.647 1.443-1.443 1.443z"
+                    />
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Copyright Info -->
+        <div class="text-center text-sm text-gray-400 mt-6">
+          &copy; 2024 Switch Style. Semua Hak Dilindungi.
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        new TypeIt("#typing", {
+          strings: [
+            "Selamat datang di Fashionista Avenue!",
+            "Menjadi istimewa di hari special.",
+          ],
+          speed: 100, // Kecepatan mengetik (ms per karakter)
+          breakLines: false, // Tidak memutus baris
+          loop: true, // Ulangi secara terus-menerus
+          deleteSpeed: 50, // Kecepatan menghapus karakter
+          startDelay: 300, // Waktu penundaan sebelum memulai
+        }).go();
+      });
+    </script>
+    <script src="source.js"></script>
+  </body>
+</html>
